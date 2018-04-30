@@ -90,7 +90,7 @@
 
           if($.inArray(event.editor.id, initializedEditors) == -1) { //For multiple ckeditors on one page: focus-eventhandler should only be added once for every editor.
             initializedEditors.push(event.editor.id);
-			
+
             event.editor.on("focus", function(event2) {
 				//replace the element with the Iframe element and flag it as CKEditor
 				self.$el = $(event.editor.editable().$);
@@ -132,7 +132,7 @@
 
     initialize: function () {
       var element = this.$el.get(0);
-      
+
       // check if we are in an iframe
       // we need to alter positioning logic if using an iframe
       if (this.$el.prop('ownerDocument') !== document && window.frames.length) {
@@ -143,8 +143,8 @@
           }
         }
       }
-      
-      
+
+
       // Initialize view objects.
       this.dropdown = new $.fn.textcomplete.Dropdown(element, this, this.option);
       var Adapter, viewName;
@@ -210,11 +210,12 @@
     //
     // value    - The selected element of the array callbacked from search func.
     // strategy - The Strategy object.
-    // e        - Click or keydown event object.
-    select: function (value, strategy, e) {
+		// e        - Click or keydown event object.
+		// index    - Clicked item index
+    select: function (value, strategy, e, index) {
       this._term = null;
-      this.adapter.select(value, strategy, e);
-      this.fire('change').fire('textComplete:select', value, strategy);
+      this.adapter.select(value, strategy, e, index);
+      this.fire('change').fire('textComplete:select', value, strategy, index);
       this.adapter.focus();
     },
 

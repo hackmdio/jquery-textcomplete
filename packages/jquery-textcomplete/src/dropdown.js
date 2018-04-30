@@ -239,9 +239,10 @@
       e.originalEvent.keepTextCompleteDropdown = this.id;
       if (!$el.hasClass('textcomplete-item')) {
         $el = $el.closest('.textcomplete-item');
-      }
-      var datum = this.data[parseInt($el.data('index'), 10)];
-      this.completer.select(datum.value, datum.strategy, e);
+			}
+			var index = parseInt($el.data('index'), 10);
+			var datum = this.data[index];
+      this.completer.select(datum.value, datum.strategy, e, index);
       var self = this;
       // Deactive at next tick to allow other event handlers to know whether
       // the dropdown has been shown or not.
@@ -342,8 +343,9 @@
     },
 
     _enter: function (e) {
-      var datum = this.data[parseInt(this._getActiveElement().data('index'), 10)];
-      this.completer.select(datum.value, datum.strategy, e);
+			var index = parseInt(this._getActiveElement().data('index'), 10);
+			var datum = this.data[index];
+      this.completer.select(datum.value, datum.strategy, e, index);
       this.deactivate();
     },
 
