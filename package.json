@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/yuku-t/jquery-textcomplete.git"
   },
+  "scripts": {
+    "build": "grunt build"
+  },
   "keywords": [
     "jquery-plugin",
     "zepto-plugin"
